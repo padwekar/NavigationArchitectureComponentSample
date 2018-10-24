@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/optionFragment">
+
+    <activity
+        android:id="@+id/colorActivity"
+        android:name="com.example.saurabh.samplenavigationcomponent.activity.ColorActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/greenFragment"
+        android:name="com.example.saurabh.samplenavigationcomponent.fragment.green.GreenFragment"
+        android:label="fragment_green"
+        tools:layout="@layout/fragment_green" />
+    <fragment
+        android:id="@+id/redFragment"
+        android:name="com.example.saurabh.samplenavigationcomponent.fragment.red.RedFragment"
+        android:label="fragment_red"
+        tools:layout="@layout/fragment_red" />
+    <fragment
+        android:id="@+id/optionFragment"
+        android:name="com.example.saurabh.samplenavigationcomponent.fragment.OptionFragment"
+        android:label="fragment_option"
+        tools:layout="@layout/fragment_option" >
+        <action
+            android:id="@+id/action_optionFragment_to_blueFragment"
+            app:destination="@id/blueNavigationGraph"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_optionFragment_to_redFragment"
+            app:destination="@id/redFragment" />
+        <action
+            android:id="@+id/action_optionFragment_to_greenFragment"
+            app:destination="@id/greenFragment" />
+        <argument
+            android:name="count"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <navigation android:id="@+id/blueNavigationGraph"
+        app:startDestination="@id/blueFragment">
+        <fragment
+            android:id="@+id/darkBlueFragment"
+            android:name="com.example.saurabh.samplenavigationcomponent.fragment.blue.dark.DarkBlueFragment"
+            android:label="fragment_dark_blue"
+            tools:layout="@layout/fragment_dark_blue" >
+            <action
+                android:id="@+id/action_darkBlueFragment_to_lightBlueFragment"
+                app:destination="@id/lightBlueFragment" />
+            <action
+                android:id="@+id/action_darkBlueFragment_to_blueFragment"
+                app:destination="@id/blueFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/lightBlueFragment"
+            android:name="com.example.saurabh.samplenavigationcomponent.fragment.blue.light.LightBlueFragment"
+            android:label="fragment_light_blue"
+            tools:layout="@layout/fragment_light_blue" />
+        <fragment
+            android:id="@+id/blueFragment"
+            android:name="com.example.saurabh.samplenavigationcomponent.fragment.blue.BlueFragment"
+            android:label="fragment_blue"
+            tools:layout="@layout/fragment_blue" />
+    </navigation>
+</navigation>
